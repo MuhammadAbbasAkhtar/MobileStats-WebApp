@@ -10,3 +10,12 @@ Server for Mobile Stats Android App 📱
 # Prerequisites
 1. Refer to [NodeJS](https://nodejs.org/en/) to download node installer to install node and npm (node package manager).
 1. MongoDB
+
+# Previews
+
+## Latest Synced Data
+![Latest Synced](https://github.com/MuhammadAbbasAkhtar/MobileStats-WebApp/blob/master/previews/latest%20synced%20data.png)
+
+## All Data
+![All data](https://github.com/MuhammadAbbasAkhtar/MobileStats-WebApp/blob/master/previews/all%20data.png)
+
