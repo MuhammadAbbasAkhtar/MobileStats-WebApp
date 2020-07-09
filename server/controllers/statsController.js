@@ -13,6 +13,33 @@ module.exports.getLatestStat = async (req, res, next) => {
         data:stat
     });
 }
+module.exports.getLatestStatDetection = async (req, res, next) =>{
+    
+    const stat =  await batteryStats.findOne().sort({ date: 'desc'})
+
+    // var date1 = new Date(stat.date)
+    // var date2 = Date.now()
+    // var diffTime = Math.abs(date2 - date1);
+    var time = stat.syncSchedule;
+    time = parseInt(time.substr(0, 2))
+    res.render("latest",{
+        data:{
+            status:stat.status,
+            charge:stat.charge,
+            current:stat.current,
+            temp:stat.temp,
+            syncSchedule:time
+        }
+    })
+   
+    // res.status(200).json({
+    //     status:stat.status,
+    //     charge:stat.charge,
+    //     current:stat.current,
+    //     updated:diffTime * 0.001 + "s Ago"
+    // });
+}
+
 module.exports.saveData =  (req, res, next) => {
     console.log(req.ip + " saving to server")
     const {device, status, voltage, current, charge, temperature, batteryType, batteryDesignCapacity, batteryCapacity,syncType,syncSchedule} = req.body;
@@ -33,7 +60,8 @@ module.exports.saveData =  (req, res, next) => {
 
         newbatteryStats.save()
         .then(() => { 
-            console.log('data saved')
+          //  console.log('data saved')
+          
             res.send("Data Saved")
         })
         .catch(err => console.log(err))

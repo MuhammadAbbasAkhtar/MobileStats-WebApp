@@ -1,0 +1,29 @@
+<h1 class="mt-4">Latest Stats</h1>
+<p class="lead mb-3"></p>
+
+    <h4><b>Status</b> :  
+        <% if(data.status == 'Discharging'){ %>
+            <span class="alert text-danger">
+        <% }else { %>
+        
+            <span>
+        <% } %>
+        
+            <%= data.status %>
+
+            </span>
+    </h4>
+    <h4><b>Charge</b> :  <%= data.charge %>%</h4>
+    <h4><b>Current</b> :  <%= data.current %> mA</h4>
+    <h4><b>Temp</b> :  <%= data.temp %></h4>
+
+    <script>
+       
+        
+        setTimeout(function(){
+            window.location.reload()
+        }, <%= data.syncSchedule -5 * 1000 %>)
+    </script>
+
+
+
